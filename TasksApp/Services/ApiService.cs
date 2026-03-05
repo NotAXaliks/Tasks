@@ -28,6 +28,13 @@ public static class ApiService
 
         return await GetResponse<T>(response);
     }
+    
+    public static async Task<T> Patch<T>(string path, object? data = null)
+    {
+        var response = await HttpClient.PatchAsJsonAsync(BaseUrl + path, data, JsonSerializerOptions);
+
+        return await GetResponse<T>(response);
+    }
 
     private static async Task<T> GetResponse<T>(HttpResponseMessage response)
     {

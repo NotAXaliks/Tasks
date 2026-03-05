@@ -10,6 +10,10 @@ namespace TasksApp.ViewModels;
 public partial class MainWindowViewModel : ViewModelBase
 {
     [ObservableProperty] private SelectedMonth _selectedMonth;
+    
+    [ObservableProperty] private string _userName = "";
+    [ObservableProperty] private string? _userRole;
+    [ObservableProperty] private string? _userDepartment;
 
     public ObservableCollection<SelectedMonth> Months { get; set; } =
     [

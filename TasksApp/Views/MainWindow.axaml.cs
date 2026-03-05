@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using TasksApp.ViewModels;
 using TasksAPI.Models;
 using TasksApp.Services;
@@ -12,8 +13,21 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         DataContext = new MainWindowViewModel();
-        
+
+        RenderUserData();
         RenderCalendar();
+    }
+
+    public async void RenderUserData()
+    {
+        if (DataContext is MainWindowViewModel vm)
+        {
+            var user = await ApiService.Get<Users>("/users");
+
+            vm.UserName = user.Name;
+            vm.UserRole = user.Role.Name;
+            vm.UserDepartment = user.Department.Name;
+        }
     }
 
     public async void RenderCalendar()
@@ -34,5 +48,12 @@ public partial class MainWindow : Window
 
             vm.UpdateEvents(calendarData);
         }
+    }
+
+    private void OnProfileEdit(object? sender, RoutedEventArgs e)
+    {
+        Window editProfileWindow = new EditProfileWindow();
+
+        editProfileWindow.Show();
     }
 }

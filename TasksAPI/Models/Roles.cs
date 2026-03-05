@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace TasksAPI.Models;
 
@@ -11,5 +12,6 @@ public class Roles
     
     public int Position { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<Users> Users { get; set; } = [];
 }
