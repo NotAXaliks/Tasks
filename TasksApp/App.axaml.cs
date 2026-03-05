@@ -4,10 +4,10 @@ using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
-using TasksDesktop.ViewModels;
-using TasksDesktop.Views;
+using TasksApp.ViewModels;
+using TasksApp.Views;
 
-namespace TasksDesktop;
+namespace TasksApp;
 
 public partial class App : Application
 {
@@ -23,10 +23,7 @@ public partial class App : Application
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
             // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             DisableAvaloniaDataAnnotationValidation();
-            desktop.MainWindow = new MainWindow
-            {
-                DataContext = new MainWindowViewModel(),
-            };
+            desktop.MainWindow = new MainWindow();
         }
 
         base.OnFrameworkInitializationCompleted();

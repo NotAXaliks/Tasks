@@ -2,9 +2,9 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using TasksDesktop.ViewModels;
+using TasksApp.ViewModels;
 
-namespace TasksDesktop;
+namespace TasksApp;
 
 /// <summary>
 /// Given a view model, returns the corresponding view if possible.

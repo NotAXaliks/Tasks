@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace TasksDesktop;
+namespace TasksApp;
 
 sealed class Program
 {

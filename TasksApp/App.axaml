@@ -1,8 +1,8 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="TasksDesktop.App"
-             xmlns:local="using:TasksDesktop"
-             RequestedThemeVariant="Default">
+             x:Class="TasksApp.App"
+             xmlns:local="using:TasksApp"
+             RequestedThemeVariant="Light">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
