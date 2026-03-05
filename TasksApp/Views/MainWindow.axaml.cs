@@ -56,4 +56,21 @@ public partial class MainWindow : Window
 
         editProfileWindow.Show();
     }
+
+    private void ShowGanttChart(object? sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void ShowKanbanBoard(object? sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void ShowCompanyTree(object? sender, RoutedEventArgs e)
+    {
+        Window companyTreeWindow = new CompanyTreeWindow();
+
+        companyTreeWindow.Show();
+    }
 }

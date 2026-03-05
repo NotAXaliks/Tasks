@@ -14,10 +14,6 @@ public partial class EditProfileWindowViewModel : ViewModelBase
     [ObservableProperty] private Roles? _userRole;
     [ObservableProperty] private Departments? _userDepartment;
 
-    public EditProfileWindowViewModel()
-    {
-    }
-
     public void UpdateData(Users user, Roles[] roles, Departments[] departments)
     {
         UserName = user.Name;

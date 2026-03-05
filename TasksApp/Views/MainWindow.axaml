@@ -18,13 +18,12 @@
     </Design.DataContext>
 
     <Grid ColumnDefinitions="Auto *" Margin="10">
-        <Grid Grid.Column="0" Background="Gray" RowSpacing="15" RowDefinitions="Auto Auto Auto Auto * Auto">
-            <Button Grid.Row="0">Каледарь с праздниками</Button>
-            <Button Grid.Row="1">Диаграмма ганта</Button>
-            <Button Grid.Row="2">Канбан-доска</Button>
-            <Button Grid.Row="3">Дерево структуры компании</Button>
+        <Grid Grid.Column="0" Background="Gray" RowSpacing="15" RowDefinitions="Auto Auto Auto * Auto">
+            <Button Grid.Row="0" Click="ShowGanttChart">Диаграмма ганта</Button>
+            <Button Grid.Row="1" Click="ShowKanbanBoard">Канбан-доска</Button>
+            <Button Grid.Row="2" Click="ShowCompanyTree">Дерево структуры компании</Button>
 
-            <Border Grid.Row="5" Padding="5 10" Background="BurlyWood">
+            <Border Grid.Row="4" Padding="5 10" Background="BurlyWood">
                 <Grid ColumnDefinitions="Auto * Auto">
                     <!-- Аватар -->
                     <Image Grid.Column="0" Source="/Assets/avalonia-logo.ico" Height="40" Width="40" />
