@@ -27,11 +27,4 @@
     <ItemGroup>
       <ProjectReference Include="..\TasksAPI\TasksAPI.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Views\CompanyTreeWindow.axaml.cs">
-        <DependentUpon>CompanyTreeWindow.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-    </ItemGroup>
 </Project>

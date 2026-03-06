@@ -64,7 +64,9 @@ public partial class MainWindow : Window
 
     private void ShowKanbanBoard(object? sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        Window kanbanWindow = new KanbanWindow();
+
+        kanbanWindow.Show();
     }
 
     private void ShowCompanyTree(object? sender, RoutedEventArgs e)

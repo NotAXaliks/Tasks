@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TasksApp.ViewModels"
+        MinWidth="1000" MinHeight="700"
+        Width="1100" Height="750"
+        x:Class="TasksApp.Views.KanbanWindow"
+        x:DataType="vm:KanbanWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="KanbanWindow">
+    <Border Padding="30">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding Columns}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" Spacing="15" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Width="250" Padding="10" Background="Gray" CornerRadius="8" DragDrop.AllowDrop="True" DragDrop.Drop="Column_Drop">
+                            <StackPanel Spacing="10">
+                                <TextBlock Text="{Binding Column.Name}" FontSize="18" FontWeight="Bold" />
+
+                                <ItemsControl ItemsSource="{Binding Children}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Spacing="15" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="LightGray" Padding="8" CornerRadius="5"
+                                                    PointerPressed="InputElement_OnPointerPressed">
+                                                <TextBlock Text="{Binding Name}" />
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Border>
+</Window>
