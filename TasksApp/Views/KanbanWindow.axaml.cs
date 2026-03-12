@@ -1,4 +1,5 @@
 using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -9,24 +10,41 @@ using TasksApp.ViewModels;
 
 namespace TasksApp.Views;
 
+public record KanbanColumn(KanbanColumns Column, ObservableCollection<Tasks> Children);
+
 public partial class KanbanWindow : Window
 {
+    public ObservableCollection<KanbanColumn> Columns { get; set; } = [];
+    
     public KanbanWindow()
     {
         InitializeComponent();
 
-        DataContext = new KanbanWindowViewModel();
+        ColumnsControl.ItemsSource = Columns;
+        DataContext = this;
 
         Update();
     }
 
     public async void Update()
     {
-        if (DataContext is not KanbanWindowViewModel vm) return;
-
         var data = await ApiService.Get<Tasks[]>("/kanban/tasks");
-
-        vm.Update(data);
+        
+        foreach (var task in data)
+        {
+            if (task.KanbanColumn == null) return;
+            
+            var column = Columns.FirstOrDefault(k => k.Column.Id == task.KanbanColumnId);
+            if (column == null)
+            {
+                column = new KanbanColumn(task.KanbanColumn!, [task]);
+                Columns.Add(column);
+            }
+            else
+            {
+                column.Children.Add(task);
+            }
+        }
     }
 
     private async void InputElement_OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -42,8 +60,6 @@ public partial class KanbanWindow : Window
 
     private async void Column_Drop(object? sender, DragEventArgs e)
     {
-        if (DataContext is not KanbanWindowViewModel vm) return;
-
         if (!e.Data.Contains("task")) return;
 
         var task = e.Data.Get("task") as Tasks;
@@ -51,7 +67,7 @@ public partial class KanbanWindow : Window
 
         if (sender is Border border && border.DataContext is KanbanColumn targetColumn)
         {
-            var sourceColumn = vm.Columns.ToList().FirstOrDefault(c => c.Children.Contains(task));
+            var sourceColumn = Columns.ToList().FirstOrDefault(c => c.Children.Contains(task));
             sourceColumn?.Children.Remove(task);
 
             targetColumn.Children.Add(task);

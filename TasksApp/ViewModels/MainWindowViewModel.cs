@@ -54,7 +54,7 @@ public partial class MainWindowViewModel : ViewModelBase
         
         var day = 0;
 
-        for (int i = 0; i < 6; i++)
+        for (var i = 0; i < 6; i++)
         {
             while (day < maxDays)
             {

@@ -1,15 +1,13 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:TasksApp.ViewModels"
         MinWidth="1000" MinHeight="700"
         Width="1100" Height="750"
         x:Class="TasksApp.Views.KanbanWindow"
-        x:DataType="vm:KanbanWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="KanbanWindow">
     <Border Padding="30">
         <ScrollViewer HorizontalScrollBarVisibility="Auto">
-            <ItemsControl ItemsSource="{Binding Columns}">
+            <ItemsControl x:Name="ColumnsControl">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal" Spacing="15" />

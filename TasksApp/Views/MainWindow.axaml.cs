@@ -59,7 +59,9 @@ public partial class MainWindow : Window
 
     private void ShowGanttChart(object? sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        Window ganttWindow = new GantChartWindow();
+
+        ganttWindow.Show();
     }
 
     private void ShowKanbanBoard(object? sender, RoutedEventArgs e)
